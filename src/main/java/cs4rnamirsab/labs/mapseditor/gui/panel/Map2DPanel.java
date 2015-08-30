@@ -1,4 +1,4 @@
-package gui.panel;
+package cs4rnamirsab.labs.mapseditor.gui.panel;
 
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -14,10 +14,10 @@ import javax.swing.JPanel;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
-import gui.util.CellToImageIconCorrespondence;
-import representation.Cell;
-import representation.Map2D;
-import representation.impl.Map2DImpl;
+import cs4rnamirsab.labs.mapseditor.gui.util.CellToImageIconCorrespondence;
+import cs4rnamirsab.labs.mapseditor.representation.Cell;
+import cs4rnamirsab.labs.mapseditor.representation.Map2D;
+import cs4rnamirsab.labs.mapseditor.representation.impl.Map2DImpl;
 
 /**
  * Panel which contains the {@link Map2D}

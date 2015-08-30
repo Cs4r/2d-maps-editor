@@ -1,4 +1,4 @@
-package representation;
+package cs4rnamirsab.labs.mapseditor.representation;
 
 import java.util.Arrays;
 import java.util.Optional;

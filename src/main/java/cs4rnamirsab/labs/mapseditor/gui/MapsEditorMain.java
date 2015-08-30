@@ -1,11 +1,11 @@
-package gui;
+package cs4rnamirsab.labs.mapseditor.gui;
 
 import java.nio.file.Paths;
 
-import gui.panel.MapsEditorPanel;
+import cs4rnamirsab.labs.mapseditor.gui.panel.MapsEditorPanel;
 
 /**
- * Entry point mapsEditor project
+ * Entry point of the map's editor
  * 
  * @author cs4r
  * @author namirsab

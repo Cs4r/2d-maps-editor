@@ -1,4 +1,4 @@
-package gui.util;
+package cs4rnamirsab.labs.mapseditor.gui.util;
 
 /**
  * Holds constants used on GUI components

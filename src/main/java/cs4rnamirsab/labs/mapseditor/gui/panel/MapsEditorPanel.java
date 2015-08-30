@@ -1,4 +1,4 @@
-package gui.panel;
+package cs4rnamirsab.labs.mapseditor.gui.panel;
 
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -18,10 +18,10 @@ import javax.swing.filechooser.FileFilter;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
-import gui.util.GuiConstants;
-import representation.Map2D;
-import representation.impl.Map2DImpl;
-import representation.impl.Map2DImplIOHelper;
+import cs4rnamirsab.labs.mapseditor.gui.util.GuiConstants;
+import cs4rnamirsab.labs.mapseditor.representation.Map2D;
+import cs4rnamirsab.labs.mapseditor.representation.impl.Map2DImpl;
+import cs4rnamirsab.labs.mapseditor.representation.impl.Map2DImplIOHelper;
 
 /**
  * 

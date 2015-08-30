@@ -1,4 +1,4 @@
-package gui.panel;
+package cs4rnamirsab.labs.mapseditor.gui.panel;
 
 import java.awt.GridLayout;
 import java.io.File;

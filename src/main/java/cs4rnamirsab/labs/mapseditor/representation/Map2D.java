@@ -1,4 +1,4 @@
-package representation;
+package cs4rnamirsab.labs.mapseditor.representation;
 
 /**
  * Represents a 2-dimensional map

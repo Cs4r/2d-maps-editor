@@ -1,13 +1,14 @@
-package gui.util;
+package cs4rnamirsab.labs.mapseditor.gui.util;
 
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.swing.ImageIcon;
 
-import representation.Cell;
+import cs4rnamirsab.labs.mapseditor.representation.Cell;
 
 /**
  * Utility class which holds correspondence between {@link Cell}s and

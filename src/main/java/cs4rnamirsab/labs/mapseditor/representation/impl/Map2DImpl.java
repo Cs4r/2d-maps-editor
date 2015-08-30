@@ -1,9 +1,9 @@
-package representation.impl;
+package cs4rnamirsab.labs.mapseditor.representation.impl;
 
 import java.util.Arrays;
 
-import representation.Cell;
-import representation.Map2D;
+import cs4rnamirsab.labs.mapseditor.representation.Cell;
+import cs4rnamirsab.labs.mapseditor.representation.Map2D;
 
 /**
  * Implementation of {@link Map2D} which holds cells as chars in a 2-dimensional

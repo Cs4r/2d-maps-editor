@@ -1,4 +1,4 @@
-package representation;
+package cs4rnamirsab.labs.mapseditor.representation;
 
 import java.io.File;
 import java.nio.file.Path;
