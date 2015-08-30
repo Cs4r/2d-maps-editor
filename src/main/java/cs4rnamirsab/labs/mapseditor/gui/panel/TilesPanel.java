@@ -13,6 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.eventbus.EventBus;
 
 /**
@@ -25,6 +28,7 @@ import com.google.common.eventbus.EventBus;
 @SuppressWarnings("serial")
 public class TilesPanel extends JPanel {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(TilesPanel.class);
 	private final JToggleButton[] tiles;
 	private final EventBus eventBus;
 	private final ButtonGroup buttonGroup;
@@ -50,17 +54,17 @@ public class TilesPanel extends JPanel {
 			jToggleButton.setVisible(true);
 			String imageIconPath = Paths.get(tilesDir.toString(), tileName[value]).toString();
 			jToggleButton.setIcon(new ImageIcon(imageIconPath));
-			jToggleButton.addActionListener(event -> selectBlock());
+			jToggleButton.addActionListener(event -> selectTile());
 			buttonGroup.add(jToggleButton);
 			add(jToggleButton);
 			return jToggleButton;
 		}).toArray(JToggleButton[]::new);
-
 	}
 
-	private void selectBlock() {
+	private void selectTile() {
 		Arrays.stream(tiles).filter(JToggleButton::isSelected).findAny()
 				.ifPresent(e -> selectedBlock = (ImageIcon) e.getIcon());
+		LOGGER.info("New tile selected");
 		eventBus.post(Optional.ofNullable(selectedBlock));
 	}
 }

@@ -36,11 +36,6 @@ public class Map2DImpl implements Map2D {
 
 	private void initializeMap() {
 		char empty = Cell.EMPTY.getCharValue();
-		// for (int row = 0; row < HEIGHT; ++row) {
-		// for (int col = 0; col < WIDTH; ++col) {
-		// map[row][col] = empty;
-		// }
-		// }
 		Arrays.stream(map).parallel().forEach(row -> Arrays.fill(row, empty));
 	}
 

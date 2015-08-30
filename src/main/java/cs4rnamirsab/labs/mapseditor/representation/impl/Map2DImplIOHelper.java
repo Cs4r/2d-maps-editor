@@ -37,6 +37,7 @@ public final class Map2DImplIOHelper implements Map2DIOHelper {
 
 	private static char[] transfromIntoRow(final String line) {
 		if (line.length() != Map2D.WIDTH) {
+			LOGGER.error("line: \"[{}]\" does not match expected length", line);
 			throw new Error("Map's width present in file is either bigger or smaller than expected");
 		}
 		return line.toCharArray();

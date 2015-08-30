@@ -15,6 +15,9 @@ import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
@@ -34,6 +37,7 @@ import cs4rnamirsab.labs.mapseditor.representation.impl.Map2DImplIOHelper;
 @SuppressWarnings("serial")
 public final class MapsEditorPanel extends JFrame {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(MapsEditorPanel.class);
 	private JLabel currentRowAndColumnLabel;
 	private JMenu fileMenu;
 	private JMenu editMenu;
@@ -143,6 +147,7 @@ public final class MapsEditorPanel extends JFrame {
 
 	private void cleanMap() {
 		mapRepresentationPanel.udpateMapRepresentation(new Map2DImpl());
+		LOGGER.info("Map cleaned");
 	}
 
 	private void saveMap() {
@@ -151,20 +156,18 @@ public final class MapsEditorPanel extends JFrame {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			Path absolutePath = dialog.getSelectedFile().toPath();
 			map2dIOHelper.saveMapRepresentationToFile(mapRepresentationPanel.getMapRepresentation(), absolutePath);
+			LOGGER.info("Map successfully saved");
 		} else {
-			System.out.println("Map not saved");
+			LOGGER.info("Map not saved");
 		}
 	}
 
 	private void loadMap() {
-		JFileChooser abrir = new JFileChooser();
-		abrir.setFileFilter(new FileFilter() {
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setFileFilter(new FileFilter() {
 			@Override
 			public boolean accept(File file) {
-				if (file.getName().toLowerCase().endsWith("txt") || file.isDirectory())
-					return true;
-				else
-					return false;
+				return file.getName().toLowerCase().endsWith("txt") || file.isDirectory();
 			}
 
 			@Override
@@ -172,12 +175,13 @@ public final class MapsEditorPanel extends JFrame {
 				return GuiConstants.ONLY_TXT_FILES;
 			}
 		});
-		abrir.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-		abrir.showOpenDialog(fileMenu);
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+		fileChooser.showOpenDialog(fileMenu);
 
-		File absolutePath = abrir.getSelectedFile();
-		Map2D mapRepresentation = map2dIOHelper.loadMapRepresentationFromFile(absolutePath);
-		mapRepresentationPanel.udpateMapRepresentation(mapRepresentation);
+		File absolutePath = fileChooser.getSelectedFile();
+		Map2D map2d = map2dIOHelper.loadMapRepresentationFromFile(absolutePath);
+		mapRepresentationPanel.udpateMapRepresentation(map2d);
+		LOGGER.info("Loaded new map");
 	}
 
 	@Subscribe

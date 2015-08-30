@@ -9,11 +9,11 @@ package cs4rnamirsab.labs.mapseditor.representation;
 public interface Map2D {
 
 	/**
-	 * Map representation height
+	 * Map height
 	 */
 	final static int HEIGHT = 31;
 	/**
-	 * Map representation width
+	 * Map width
 	 */
 	final static int WIDTH = 28;
 

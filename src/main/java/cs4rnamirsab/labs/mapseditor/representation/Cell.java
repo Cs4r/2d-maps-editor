@@ -3,6 +3,9 @@ package cs4rnamirsab.labs.mapseditor.representation;
 import java.util.Arrays;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Represents basic pieces of a {@link Map2D}
  * 
@@ -10,7 +13,6 @@ import java.util.Optional;
  *
  */
 public enum Cell {
-
 	//@formatter:off
 	CELL_1('1'),
 	CELL_2('2'),
@@ -31,6 +33,7 @@ public enum Cell {
 	BIG_DOT('0');
 	//@formatter:on
 
+	public static final Logger LOGGER = LoggerFactory.getLogger(Cell.class);
 	private final char charValue;
 
 	private Cell(final char c) {
@@ -53,6 +56,9 @@ public enum Cell {
 		if (cell.isPresent()) {
 			return cell.get();
 		}
+
+		LOGGER.error("Character '{}' whose Iteger representation is {} cannot be transformed into a {}", charValue,
+				Character.getNumericValue(charValue), Cell.class.getName());
 
 		throw new IllegalArgumentException("Character " + charValue + " cannot be casted to " + Cell.class.getName());
 	}

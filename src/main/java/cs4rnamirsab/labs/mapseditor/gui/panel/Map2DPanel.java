@@ -11,6 +11,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
@@ -28,6 +31,7 @@ import cs4rnamirsab.labs.mapseditor.representation.impl.Map2DImpl;
 @SuppressWarnings("serial")
 public class Map2DPanel extends JPanel {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(Map2DPanel.class);
 	private static final boolean DRAGGING = true;
 	private JButton[][] tiles;
 	private boolean mode = !DRAGGING;
@@ -94,12 +98,14 @@ public class Map2DPanel extends JPanel {
 			public void mousePressed(MouseEvent e) {
 				super.mousePressed(e);
 				mode = DRAGGING;
+				LOGGER.info("Mouse pressed on tile ({}, {})", i, j);
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				super.mouseReleased(e);
 				mode = !DRAGGING;
+				LOGGER.info("Mouse released for tile ({}, {})", i, j);
 			}
 		});
 	}
@@ -110,6 +116,7 @@ public class Map2DPanel extends JPanel {
 			mapRepresentation.setCell(i, j, block);
 			tiles[i][j].setIcon(image);
 			repaint();
+			LOGGER.info("Tile at coordinates ({}, {}) was updated", i, j);
 		});
 	}
 

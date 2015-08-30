@@ -8,6 +8,9 @@ import java.util.Map;
 
 import javax.swing.ImageIcon;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cs4rnamirsab.labs.mapseditor.representation.Cell;
 
 /**
@@ -19,6 +22,7 @@ import cs4rnamirsab.labs.mapseditor.representation.Cell;
  */
 public final class CellToImageIconCorrespondence {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(CellToImageIconCorrespondence.class);
 	private final Map<Cell, ImageIcon> blockToImage;
 	private final Map<String, Cell> imageToBlock;
 
@@ -35,10 +39,10 @@ public final class CellToImageIconCorrespondence {
 		for (String tileName : dir.list()) {
 			String tilePathAsString = Paths.get(tilesDir.toString(), tileName).toString();
 			ImageIcon img = new ImageIcon(tilePathAsString);
-			Cell block = Cell.fromChar(tileName.charAt(0));
-			System.out.println(block);
-			blockToImage.put(block, img);
-			imageToBlock.put(img.toString(), block);
+			Cell cell = Cell.fromChar(tileName.charAt(0));
+			LOGGER.info("Loaded cell {} ", cell);
+			blockToImage.put(cell, img);
+			imageToBlock.put(img.toString(), cell);
 		}
 	}
 
